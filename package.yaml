@@ -1,0 +1,50 @@
+name: Graphalyze
+version: 0.15.0.0
+github: 'reouno/Graphalyze'
+license: OtherLicense
+license-File: LICENSE
+copyright: (c) Ivan Lazar Miljenovic
+author: Ivan Lazar Miljenovic
+maintainer: Ivan.Miljenovic@gmail.com
+
+extra-source-files:
+  - TODO
+  - README.md
+
+# Metadata used when publishing your package
+# synopsis:            Short description of your package
+# category:            Web
+
+# To avoid duplicated efforts in documentation and dealing with the
+# complications of embedding Haddock markup inside cabal files, it is
+# common to point users to the README.md file.
+description: Please see the README on GitHub at <https://github.com/githubuser/Graphalyze#readme>
+
+dependencies:
+  - base >= 4.7 && < 5
+
+library:
+  source-dirs: .
+  dependencies:
+    - array
+    - containers
+    - directory
+    - filepath
+    - process
+    - random
+    - bktrees
+    - fgl
+    - graphviz
+    - pandoc
+    - text
+    - time
+# executables:
+#   SourceGraph-exe:
+#     main: Main.hs
+#     source-dirs: .
+#     ghc-options:
+#       - -threaded
+#       - -rtsopts
+#       - -with-rtsopts=-N
+#     dependencies:
+#       - SourceGraph

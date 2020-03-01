@@ -39,16 +39,10 @@ import           Data.GraphViz.Exception
 
 import Control.Exception     (SomeException(..), tryJust)
 import Control.Monad         (liftM, when)
-import Data.Time             (formatTime, getZonedTime, zonedTimeToLocalTime)
+import Data.Time             (defaultTimeLocale, formatTime, getZonedTime, zonedTimeToLocalTime)
 import System.Directory      (createDirectoryIfMissing)
 import System.FilePath       (makeRelative)
 import System.FilePath.Posix ((<.>), (</>))
-
-#if MIN_VERSION_time (1,5,0)
-import Data.Time (defaultTimeLocale)
-#else
-import System.Locale (defaultTimeLocale)
-#endif
 
 -- -----------------------------------------------------------------------------
 
