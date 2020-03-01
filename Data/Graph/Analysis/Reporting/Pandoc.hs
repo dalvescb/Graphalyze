@@ -37,6 +37,7 @@ import Control.Arrow     ((***))
 import Control.Exception (SomeException, try)
 import Data.List         (intersperse)
 import Data.Maybe        (fromJust, isNothing)
+import qualified Data.Text as T
 import System.Directory  (removeDirectoryRecursive)
 import System.FilePath   ((<.>), (</>))
 
@@ -47,7 +48,7 @@ import System.FilePath   ((<.>), (</>))
  -}
 
 pandocHtml :: PandocDocument
-pandocHtml = pd { writer        = writeHtmlString
+pandocHtml = pd { writer        = writeHtml5String
                 , extension     = "html"
                 , templateName  = "html"
                 , extGraphProps = Just VProps { grSize = DefaultSize
@@ -84,7 +85,7 @@ pandocMarkdown = pd { writer = writeMarkdown
 -- | Definition of a Pandoc Document.  Size measurements are in inches,
 --   and a 6:4 ratio is used for width:length.
 data PandocDocument = PD { -- | The Pandoc document style
-                           writer        :: WriterOptions -> Pandoc -> String
+                           writer        :: WriterOptions -> Pandoc -> PandocIO T.Text
                            -- | The file extension used
                          , extension     :: FilePath
                            -- | Which template to get.
@@ -154,7 +155,7 @@ createPandoc p d = do created <- tryCreateDirectory dir
                                  case elems of
                                    Just es -> do let es' = htmlAuthDt : es
                                                      pnd = Pandoc meta es'
-                                                     doc = convert pnd
+                                                 doc <- runIO (convert pnd) >>= handleError
                                                  wr <- tryWrite doc
                                                  case wr of
                                                    (Right _) -> success
@@ -175,7 +176,7 @@ createPandoc p d = do created <- tryCreateDirectory dir
                    , largeImage   = extGraphProps p
                    , saveDot      = keepDot p
                    }
-      convert = writer p writerOptions
+      convert = fmap T.unpack <$> writer p writerOptions
       file = dir </> fileFront d <.> extension p
       tryWrite :: String -> IO (Either SomeException ())
       tryWrite = try . writeFile file
