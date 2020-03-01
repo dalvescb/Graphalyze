@@ -4,10 +4,10 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 30cc45191cfe1c376f8f6c22616de03d68c125a9f452bb03ba527573bd089364
+-- hash: 0ff334e252b0b6beab024745c08cc20e49c0478463f25e38ffb51d99c0507c41
 
 name:           Graphalyze
-version:        0.15.0.0
+version:        0.15.1.0
 description:    Please see the README on GitHub at <https://github.com/githubuser/Graphalyze#readme>
 homepage:       https://github.com/reouno/Graphalyze#readme
 bug-reports:    https://github.com/reouno/Graphalyze/issues
