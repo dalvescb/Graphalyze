@@ -1,10 +1,10 @@
 cabal-version: 1.12
 
--- This file has been generated from package.yaml by hpack version 0.31.2.
+-- This file has been generated from package.yaml by hpack version 0.34.4.
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 0ff334e252b0b6beab024745c08cc20e49c0478463f25e38ffb51d99c0507c41
+-- hash: 49196d1b3ee8bde2b528fb7fddefad3f4f509e36e94f5b95ebb75523ad6f4729
 
 name:           Graphalyze
 version:        0.15.1.0
@@ -41,7 +41,7 @@ library
   other-modules:
       Paths_Graphalyze
   hs-source-dirs:
-      ./.
+      ./
   build-depends:
       array
     , base >=4.7 && <5

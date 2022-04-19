@@ -191,11 +191,11 @@ createPandoc p d = do created <- tryCreateDirectory dir
 
 -- | The meta information
 makeMeta         :: DocInline -> String -> String -> Meta
-makeMeta tle a t = P.makeMeta (inlines tle) [[Str a]] [Str t]
+makeMeta tle a t = P.makeMeta (inlines tle) [[Str $ T.pack a]] [Str $ T.pack t]
 
 -- | Html output doesn't show the author and date; use this to print it.
 htmlInfo         :: String -> String -> Block
-htmlInfo auth dt = RawBlock (Format "html") html
+htmlInfo auth dt = RawBlock (Format $ T.pack "html") (T.pack html)
     where
       heading = "<h1>Document Information</h1>"
       html = unlines [heading, htmlize auth, htmlize dt]
@@ -203,12 +203,12 @@ htmlInfo auth dt = RawBlock (Format "html") html
 
 -- | Link conversion
 loc2target             :: Location -> Target
-loc2target (Web url)   = (url,"")
-loc2target (File file) = (file,"")
+loc2target (Web url)   = (T.pack url,T.pack "")
+loc2target (File file) = (T.pack file,T.pack "")
 
 -- | Conversion of simple inline elements.
 inlines                    :: DocInline -> [Inline]
-inlines (Text str)         = [Str str]
+inlines (Text str)         = [Str $ T.pack str]
 inlines BlankSpace         = [Space]
 inlines (Grouping grp)     = concat . intersperse [Space] $ map inlines grp
 inlines (Bold inl)         = [Strong (inlines inl)]

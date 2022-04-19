@@ -13,7 +13,7 @@ packages:
     hackage: bktrees-0.3.1@sha256:696026dd70fd2ee04ed37505d6380325532c6840442cdd7a030f20ad15b5e1be,985
 snapshots:
 - completed:
-    size: 524154
-    url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/14/20.yaml
-    sha256: 2f5099f69ddb6abfe64400fe1e6a604e8e628f55e6837211cd70a81eb0a8fa4d
-  original: lts-14.20
+    size: 586103
+    url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/18/19.yaml
+    sha256: 32716534fff554b7f90762130fdb985cabf29f157758934dd1c8f3892a646430
+  original: lts-18.19
